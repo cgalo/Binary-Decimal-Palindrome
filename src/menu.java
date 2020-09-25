@@ -22,9 +22,9 @@ public class menu {
     }
     private static int [] parseInput(String input){
 
-        String inputs [] = input.split(" ", 2); // Get the first two "words" from the input line
-        int nums[] = new int[2];     // Create int array to save the numbers in the inputs array
-        for (int i = 0; i < 2; i++)       // Loop through the arrays
+        String inputs [] = input.split(" ", 2);     // Get the first two "words" from the input line
+        int nums[] = new int[2];                    // Create int array to save the numbers in the inputs array
+        for (int i = 0; i < 2; i++)                 // Loop through the arrays
             nums[i] = Integer.parseInt(inputs[i]);  // Insert the current inputs element as an int into nums
 
         return nums;                                // Return the converted input as a int array
