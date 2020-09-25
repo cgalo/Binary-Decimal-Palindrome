@@ -10,12 +10,20 @@ public class menu {
             System.out.println("Input Range: ");
             String inputLine = sc.nextLine();       // Get the whole line input from the user
 
-            int nums [] = parseInput(inputLine);    // Get the values from the user input
-            validInput = inputValidity(nums);       // Check that the input values have no errors
+            int numRange[] = parseInput(inputLine); // Get the values from the user input and save them into an array
+            validInput = inputValidity(numRange);   // Check that the input values have no errors
             if (validInput)                         // We continue only if the input is valid
             {
-                // Here we'll start the logic to convert decimal to palindromes and check the validation
-                // by implementing a stack
+                // Now we use the two values in the array to use as range, we'll traverse from num[0] to num[1]
+                for (int num = numRange[0]; num <= numRange[1]; num++)
+                {
+                    if (isDecimalPalindrome(num))   // If the current num is a palindrome
+                    {
+                        // Now we need to convert the decimal into a binary number and check if that is a palindrome
+
+                    }
+                }
+
             }
         } while (!validInput);
 
@@ -52,5 +60,39 @@ public class menu {
         }
 
         return validInput;
+    }
+
+    private static boolean isDecimalPalindrome(int num)
+    {
+        /**
+         * Function checks that the given number is a palindrome
+         * Returns true if it is, false if it's not
+         * */
+
+        // Base case, as the num will be higher than 1 and anything that doesn't have two digits is a palindrome
+         if (num <= 9)
+             return true;
+
+         StackInterface<Integer> digits = new Stack<Integer>();         // Create a stack to save the digits in order
+         int [] revDigits = new int[Integer.toString(num).length()];    // Create array to store digits in reverse
+         int revIndex = 0;
+
+        while (num > 0)
+        {
+            int digit = num % 10;                                       // Get the current digit
+            digits.push(digit);                                         // Insert the digit into the stack
+            revDigits[revIndex] = digit;                                // Insert the digit into the array
+            num = num / 10;                                             // Update the number value
+            revIndex++;                                                 // Update digIndex
+        }
+
+        for (Integer revDig : revDigits)                                // Start looping through the array
+        {
+            int digit = digits.pop();                                   // Get digit from stack
+            if (revDig != digit)                                        // If the digits are not the same
+                return false;                                           // Return false
+        }
+        return true;                                                    // Return true as the number is a palindrome
+
     }
 }
