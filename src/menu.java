@@ -14,7 +14,8 @@ public class menu {
             validInput = inputValidity(nums);       // Check that the input values have no errors
             if (validInput)                         // We continue only if the input is valid
             {
-
+                // Here we'll start the logic to convert decimal to palindromes and check the validation
+                // by implementing a stack
             }
         } while (!validInput);
 
@@ -22,8 +23,8 @@ public class menu {
     private static int [] parseInput(String input){
 
         String inputs [] = input.split(" ", 2); // Get the first two "words" from the input line
-        int nums[] = new int[input.length()-1];     // Create int array to save the numbers in the inputs array
-        for (int i = 0; i < nums.length; i++)       // Loop through the arrays
+        int nums[] = new int[2];     // Create int array to save the numbers in the inputs array
+        for (int i = 0; i < 2; i++)       // Loop through the arrays
             nums[i] = Integer.parseInt(inputs[i]);  // Insert the current inputs element as an int into nums
 
         return nums;                                // Return the converted input as a int array
